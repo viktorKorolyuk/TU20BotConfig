@@ -1,16 +1,20 @@
 <template>
   <div class="max-w-4xl mx-auto px-4">
     <div class="mb-4">
-      <label for="channel-id" class="text-2xl font-bold block mb-1"
-        >Message Channel Id
-      </label>
-      <input
-        type="number"
-        id="channel-id"
-        v-model="channelId"
-        class="border rounded p-2 w-full max-w-sm bg-gray-100"
+      <label class="text-2xl font-bold block mb-1">Message Channel Id </label>
+      <DiscordSelector
+        :options="channelOptions"
+        v-model="channel"
+        class="w-full max-w-sm"
         @input="saveChannelId"
       />
+      <!--      <input-->
+      <!--        type="number"-->
+      <!--        id="channel-id"-->
+      <!--        v-model="channelId"-->
+      <!--        class="border rounded p-2 w-full max-w-sm bg-gray-100"-->
+      <!--        @input="saveChannelId"-->
+      <!--      />-->
     </div>
 
     <div class="mb-4">
@@ -32,26 +36,44 @@
 </template>
 
 <script>
+// Components
+import DiscordSelector from '@/components/DiscordSelector'
+
+// Libraries
 import axios from 'axios'
 
 export default {
   name: 'Welcome',
 
+  components: { DiscordSelector },
+
   data() {
     return {
-      channelId: '',
-      messages: ''
+      channel: null,
+      messages: '',
+
+      channelOptions: []
     }
   },
 
   async mounted() {
-    this.channelId = (await axios.get('/api/welcome/channel')).data
+    this.channelOptions = (
+      await axios.get('/api/discord/channels', {
+        params: {
+          type: 'text'
+        }
+      })
+    ).data
+
+    const id = (await axios.get('/api/welcome/channel')).data
+
+    this.channel = this.channelOptions.find(x => x.id === id)
     this.messages = (await axios.get('/api/welcome/messages')).data.join('\n')
   },
 
   methods: {
     async saveChannelId() {
-      await axios.put('/api/welcome/channel', this.channelId)
+      await axios.put('/api/welcome/channel', { id: this.channel.id })
     },
 
     async saveMessages() {
