@@ -8,13 +8,6 @@
         class="w-full max-w-sm"
         @input="saveChannelId"
       />
-      <!--      <input-->
-      <!--        type="number"-->
-      <!--        id="channel-id"-->
-      <!--        v-model="channelId"-->
-      <!--        class="border rounded p-2 w-full max-w-sm bg-gray-100"-->
-      <!--        @input="saveChannelId"-->
-      <!--      />-->
     </div>
 
     <div class="mb-4">

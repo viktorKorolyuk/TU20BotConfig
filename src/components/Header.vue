@@ -17,6 +17,15 @@
     <div class="flex justify-center mx-auto max-w-4xl border-b">
       <router-link
         tag="a"
+        to="/server"
+        class="flex items-center font-light p-2"
+        :class="{ 'border-b-2 border-black font-bold': server }"
+      >
+        <Globe class="w-4 h-4 mr-2" />
+        Server
+      </router-link>
+      <router-link
+        tag="a"
         to="/welcome"
         class="flex items-center font-light p-2"
         :class="{ 'border-b-2 border-black font-bold': welcome }"
@@ -31,13 +40,18 @@
 <script>
 // Icons
 import Hand from 'heroicons/outline/hand.svg'
+import Globe from 'heroicons/outline/globe.svg'
 
 export default {
   name: 'Header',
 
-  components: { Hand },
+  components: { Hand, Globe },
 
   computed: {
+    server() {
+      return this.$route.meta.server
+    },
+
     welcome() {
       return this.$route.meta.welcome
     }
