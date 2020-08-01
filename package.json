@@ -11,6 +11,7 @@
     "autoprefixer": "^9.8.6",
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
+    "date-fns": "^2.15.0",
     "heroicons": "^0.3.7",
     "tailwindcss": "^1.6.0",
     "vue": "^2.6.11",
