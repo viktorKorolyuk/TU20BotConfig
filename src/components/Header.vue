@@ -33,6 +33,15 @@
         <Hand class="w-4 h-4 mr-2" />
         Welcome
       </router-link>
+      <router-link
+        tag="a"
+        to="/logs"
+        class="flex items-center font-light p-2"
+        :class="{ 'border-b-2 border-black font-bold': logs }"
+      >
+        <ClipboardList class="w-4 h-4 mr-2" />
+        Logs
+      </router-link>
     </div>
   </div>
 </template>
@@ -41,11 +50,12 @@
 // Icons
 import Hand from 'heroicons/outline/hand.svg'
 import Globe from 'heroicons/outline/globe.svg'
+import ClipboardList from 'heroicons/outline/clipboard-list.svg'
 
 export default {
   name: 'Header',
 
-  components: { Hand, Globe },
+  components: { Hand, Globe, ClipboardList },
 
   computed: {
     server() {
@@ -54,6 +64,10 @@ export default {
 
     welcome() {
       return this.$route.meta.welcome
+    },
+
+    logs() {
+      return this.$route.meta.logs
     }
   }
 }
