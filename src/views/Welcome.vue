@@ -1,20 +1,13 @@
 <template>
-  <div class="max-w-4xl mx-auto px-4">
+  <div class="max-w-4xl mx-auto px-4 mb-32">
     <div class="mb-4">
-      <label class="text-2xl font-bold block mb-1">Message Channel Id </label>
+      <label class="text-2xl font-bold block mb-1">Welcome Channel</label>
       <DiscordSelector
         :options="channelOptions"
         v-model="channel"
         class="w-full max-w-sm"
         @input="saveChannelId"
       />
-      <!--      <input-->
-      <!--        type="number"-->
-      <!--        id="channel-id"-->
-      <!--        v-model="channelId"-->
-      <!--        class="border rounded p-2 w-full max-w-sm bg-gray-100"-->
-      <!--        @input="saveChannelId"-->
-      <!--      />-->
     </div>
 
     <div class="mb-4">

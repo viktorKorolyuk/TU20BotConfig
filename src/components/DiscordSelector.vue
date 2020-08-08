@@ -16,7 +16,7 @@
       <button
         v-for="(option, index) of options"
         :key="index"
-        class="flex items-center text-gray-700 w-full p-2"
+        class="flex items-center text-gray-700 w-full p-2 hover:bg-gray-100"
         @click.stop="select(option)"
       >
         <Hashtag class="w-4 h-4 mr-2 text-gray-500" />
