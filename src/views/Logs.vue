@@ -7,7 +7,7 @@
         </div>
         <a href="/api/logs/excel.xlsx" download class="ml-auto">
           <button
-            class="bg-blue-500 text-white transition-colors duration-150 hover:bg-blue-600 rounded px-4 py-2 flex items-center"
+            class="bg-blue-500 text-sm text-white transition-colors duration-150 hover:bg-blue-600 rounded px-4 py-2 flex items-center"
           >
             <CloudDownload class="w-4 h-4 mr-2" />
             Export
