@@ -42,20 +42,46 @@
         <ClipboardList class="w-4 h-4 mr-2" />
         Logs
       </router-link>
+      <router-link
+        tag="a"
+        to="/factories"
+        class="flex items-center font-light p-2"
+        :class="{ 'border-b-2 border-black font-bold': factories }"
+      >
+        <LightningBolt class="w-4 h-4 mr-2" />
+        Factories
+      </router-link>
+      <button
+        class="flex items-center font-light p-2 bg-blue-100 rounded-t px-2 ml-4"
+        @click="commit"
+      >
+        <LockClosed class="w-4 h-4 mr-2" />
+        Commit
+      </button>
     </div>
+
+    <Flash ref="commit">All settings committed.</Flash>
   </div>
 </template>
 
 <script>
 // Icons
+import LockClosed from 'heroicons/outline/lock-closed.svg'
 import Hand from 'heroicons/outline/hand.svg'
 import Globe from 'heroicons/outline/globe.svg'
+import LightningBolt from 'heroicons/outline/lightning-bolt.svg'
 import ClipboardList from 'heroicons/outline/clipboard-list.svg'
+
+// Components
+import Flash from '@/components/Flash'
+
+// Libraries
+import axios from 'axios'
 
 export default {
   name: 'Header',
 
-  components: { Hand, Globe, ClipboardList },
+  components: { LockClosed, Hand, Globe, LightningBolt, ClipboardList, Flash },
 
   computed: {
     server() {
@@ -68,6 +94,18 @@ export default {
 
     logs() {
       return this.$route.meta.logs
+    },
+
+    factories() {
+      return this.$route.meta.factories
+    }
+  },
+
+  methods: {
+    async commit() {
+      await axios.put('/api/commit')
+
+      this.$refs.commit.show()
     }
   }
 }

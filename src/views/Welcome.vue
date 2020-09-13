@@ -6,6 +6,7 @@
         :options="channelOptions"
         v-model="channel"
         class="w-full max-w-sm"
+        icon="text"
         @input="saveChannelId"
       />
     </div>

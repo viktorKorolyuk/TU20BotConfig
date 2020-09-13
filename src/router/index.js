@@ -5,6 +5,7 @@ import Logs from '@/views/Logs'
 import Server from '@/views/Server'
 import Landing from '@/views/Landing'
 import Welcome from '@/views/Welcome'
+import Factories from '@/views/Factories'
 
 Vue.use(VueRouter)
 
@@ -35,6 +36,13 @@ const routes = [
     component: Logs,
 
     meta: { logs: true }
+  },
+  {
+    path: '/factories',
+    name: 'Factories',
+    component: Factories,
+
+    meta: { factories: true }
   }
 ]
 
